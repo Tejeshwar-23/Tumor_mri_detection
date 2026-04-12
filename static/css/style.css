@@ -41,25 +41,34 @@ body {
 header {
     text-align: center;
     margin-bottom: 4rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
-header h1 {
-    font-size: 3.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 0.15em;
-    color: var(--primary);
-    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
-    margin-bottom: 0.5rem;
+.logo-group {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 15px;
+    gap: 20px;
+    margin-bottom: 0.5rem;
+    flex-wrap: wrap; /* Prevents breaking on mobile */
+}
+
+header h1 {
+    font-size: 3.2rem; /* Slightly reduced to prevent wrapping */
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--primary);
+    text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary);
+    margin: 0;
 }
 
 .brain-icon {
-    font-size: 3rem;
-    filter: drop-shadow(0 0 10px #ff69b4);
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 15px #ff69b4);
+    line-height: 1;
 }
 
 header p {
