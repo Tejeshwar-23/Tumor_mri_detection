@@ -8,6 +8,9 @@ from tensorflow.keras.models import load_model
 from werkzeug.exceptions import RequestEntityTooLarge
 
 app = Flask(__name__)
+app.config['TEMPLATES_AUTO_RELOAD'] = True
+app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 0
+
 
 # --- CONFIGURATION ---
 # 5MB Payload Limit
@@ -19,9 +22,9 @@ try:
     # Ensure model is loaded from current working directory
     model_path = os.path.join(os.getcwd(), "brain_tumor_model.h5")
     model = load_model(model_path)
-    print("✅ Model loaded successfully from:", model_path)
+    print(" Model loaded successfully from:", model_path)
 except Exception as e:
-    print("❌ Model loading failed:", e)
+    print(" Model loading failed:", e)
 
 # --- UTILS ---
 def encode_image(img):

@@ -3,86 +3,77 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEURAL-SCAN | Brain Tumor Detection System</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <title>NEURAL-SCAN v2.0 | Advanced Brain MRI Analysis</title>
+    <!-- Cache busting version 2.1 -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v=2.1">
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Neural-Scan AI</h1>
-            <p>Advanced Neurological Diagnostic Interface v2.0</p>
+            <p>High-Fidelity Neurological Diagnostic Terminal</p>
         </header>
 
         <main>
-            <!-- STAGE 1: SYSTEM UPLOAD -->
+            <!-- STAGE 1: UPLOAD -->
             <section class="upload-section card">
                 <div class="card-header">
-                    <h3>[01] UPLOAD_SCAN_SEQUENCE</h3>
+                    <h3>[01] ACQUISITION_PROTOCOL</h3>
                 </div>
                 <div class="drop-zone" id="drop-zone">
-                    <p>DRAG_AND_DROP_MRI_DATA // OR_CLICK_TO_INITIALIZE</p>
+                    <p>SYSTEM_IDLE: READY_FOR_DICOM_DATA_STREAM</p>
                     <input type="file" id="image-input" accept=".jpg, .jpeg, .png" hidden>
                 </div>
-                <button id="analyze-btn" class="primary-btn">Initialize Inference</button>
+                <button id="analyze-btn" class="primary-btn">Begin Neural Inference</button>
             </section>
 
-            <!-- STAGE 2: PROCESSING CONSOLE -->
+            <!-- STAGE 2: PROCESSING LOG -->
             <section id="console-section" class="card console-card hidden">
                 <div class="console-title">
-                    <span>SYSTEM_PROCESSING_LOG</span>
-                    <span id="log-status">RUNNING...</span>
+                    <span>LDT_KERNAL_LOG</span>
+                    <span id="log-status">ACTIVE</span>
                 </div>
-                <div id="processing-log">
-                    <!-- Logs will be typed here -->
-                </div>
+                <div id="processing-log"></div>
             </section>
 
-            <!-- STAGE 3: ANALYSIS VISUALIZATION -->
+            <!-- STAGE 3: VISUALIZATION -->
             <div id="results-container" class="hidden">
                 <section class="analysis-grid">
-                    
-                    <!-- SOURCE SCAN WITH SCANNER ANIMATION -->
                     <div class="card hero-card" id="hero-image-wrap">
-                        <h3>[02] MRI_DATA_VERIFICATION</h3>
+                        <h3>[02] SOURCE_VERIFICATION</h3>
                         <div class="img-container" id="original-container">
-                            <img id="img-original" src="" alt="MRI Source">
+                            <img id="img-original" src="" alt="MRI">
                             <div class="scanner-overlay">
                                 <div class="scanner-line"></div>
                             </div>
                         </div>
-                        <p class="caption">SOURCE_IMAGE: Verified Grayscale Stream.</p>
                     </div>
 
-                    <!-- DIP PIPELINE GRID -->
                     <div class="preprocessing-grid">
                         <div class="card sub-card">
-                            <h4>NOISE_REDUCTION</h4>
+                            <h4>DENOISING</h4>
                             <div class="img-container sm">
                                 <img id="img-denoised" src="" alt="Denoised">
                             </div>
-                            <p class="caption">Gaussian blur applied for artifact suppression.</p>
                         </div>
                         <div class="card sub-card">
-                            <h4>HIST_EQUALIZATION</h4>
+                            <h4>ENHANCEMENT</h4>
                             <div class="img-container sm">
                                 <img id="img-enhanced" src="" alt="Enhanced">
                             </div>
-                            <p class="caption">Contrast optimization via histogram scaling.</p>
                         </div>
                         <div class="card sub-card">
-                            <h4>INPUT_NORMALIZATION</h4>
+                            <h4>INPUT_NORM</h4>
                             <div class="img-container sm">
                                 <img id="img-processed" src="" alt="Processed">
                             </div>
-                            <p class="caption">Dimensional alignment: 128x128px grayscale.</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- FINAL GAUSSIAN DIAGNOSIS -->
+                <!-- STAGE 4: OUTPUT -->
                 <section class="card prediction-card">
-                    <h3>[03] FINAL_DIAGNOSTIC_OUTPUT</h3>
-                    
+                    <h3>[03] DIAGNOSTIC_OUTPUT</h3>
                     <div id="res-tag" class="result-tag">--</div>
 
                     <div class="gauge-container">
@@ -97,16 +88,22 @@
                     </div>
 
                     <div class="result-item">
-                        <span class="label">RAW_PROBABILITY</span>
-                        <span id="res-probability" class="value" style="font-size: 1rem; color: #4ade80;">--</span>
+                        <span class="label">PROBABILITY</span>
+                        <span id="res-probability" class="value" style="color: #4ade80;">--</span>
                     </div>
 
-                    <p class="disclaimer" style="margin-top: 2rem;">NEURAL_SCAN SYSTEM: For research/educational use only. Final clinical assessment required by medical professional.</p>
+                    <p class="disclaimer">RESEARCH_SYSTEM_ONLY: Clinical validation pending.</p>
                 </section>
             </div>
         </main>
+
+        <!-- NO COPYRIGHT LINE HERE -->
+        <footer style="text-align: center; padding: 2rem 0; color: #475569; font-size: 0.8rem;">
+            SYSTEM_STATUS: STABLE // DOM_VER: 2.1
+        </footer>
     </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- Cache busting version 2.1 -->
+    <script src="{{ url_for('static', filename='js/main.js') }}?v=2.1"></script>
 </body>
 </html>
