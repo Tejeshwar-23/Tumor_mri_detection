@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brain Tumor Detection | DIP & CNN</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Brain Tumor Detection</h1>
+            <p>Automated MRI Analysis using DIP and CNN</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section class="upload-section card">
+                <h3>1. Upload MRI Scan</h3>
+                <div class="drop-zone" id="drop-zone">
+                    <p>Click or Drag image here</p>
+                    <input type="file" id="image-input" accept=".jpg, .jpeg, .png" hidden>
+                </div>
+                <button id="analyze-btn" class="primary-btn">Analyze Image</button>
+            </section>
+
+            <!-- Loading Spinner -->
+            <div id="loading-overlay" class="hidden">
+                <div class="spinner"></div>
+                <p>Analyzing image...</p>
+            </div>
+
+            <!-- Results Dashboard (Hidden by default) -->
+            <div id="results-container" class="hidden">
+                <section class="analysis-grid">
+                    <!-- Original Image Card -->
+                    <div class="card hero-card">
+                        <h3>Original MRI Scan</h3>
+                        <div class="img-container">
+                            <img id="img-original" src="" alt="Original MRI">
+                        </div>
+                    </div>
+
+                    <!-- Preprocessing Pipeline Row -->
+                    <div class="preprocessing-grid">
+                        <div class="card sub-card">
+                            <h4>Denoised (Blur)</h4>
+                            <div class="img-container sm">
+                                <img id="img-denoised" src="" alt="Denoised">
+                            </div>
+                            <p class="caption">Gaussian filter applied for noise reduction.</p>
+                        </div>
+                        <div class="card sub-card">
+                            <h4>Enhanced (Hist)</h4>
+                            <div class="img-container sm">
+                                <img id="img-enhanced" src="" alt="Enhanced">
+                            </div>
+                            <p class="caption">Contrast improvement via Equalization.</p>
+                        </div>
+                        <div class="card sub-card">
+                            <h4>Processed (128x128)</h4>
+                            <div class="img-container sm">
+                                <img id="img-processed" src="" alt="Processed">
+                            </div>
+                            <p class="caption">Resized and normalized input for the model.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Final Prediction Result -->
+                <section class="prediction-card card">
+                    <h3>Final Diagnosis</h3>
+                    <div class="results-layout">
+                        <div class="result-item">
+                            <span class="label">Prediction:</span>
+                            <span id="res-prediction" class="value">--</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">Tumor Probability:</span>
+                            <span id="res-probability" class="value">--</span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">Confidence:</span>
+                            <span id="res-confidence" class="value">--</span>
+                        </div>
+                    </div>
+                    <p class="disclaimer">*Note: This is an educational tool. Accuracy is based on training data.</p>
+                </section>
+            </div>
+        </main>
+
+        <footer>
+            <p>&copy; 2026 Brain Tumor Detection System</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
