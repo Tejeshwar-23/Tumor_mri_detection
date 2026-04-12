@@ -3,96 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brain Tumor Detection | DIP & CNN</title>
+    <title>NEURAL-SCAN | Brain Tumor Detection System</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         <header>
-            <h1>🧠 Brain Tumor Detection</h1>
-            <p>Automated MRI Analysis using DIP and CNN</p>
+            <h1>Neural-Scan AI</h1>
+            <p>Advanced Neurological Diagnostic Interface v2.0</p>
         </header>
 
         <main>
-            <!-- Upload Section -->
+            <!-- STAGE 1: SYSTEM UPLOAD -->
             <section class="upload-section card">
-                <h3>1. Upload MRI Scan</h3>
+                <div class="card-header">
+                    <h3>[01] UPLOAD_SCAN_SEQUENCE</h3>
+                </div>
                 <div class="drop-zone" id="drop-zone">
-                    <p>Click or Drag image here</p>
+                    <p>DRAG_AND_DROP_MRI_DATA // OR_CLICK_TO_INITIALIZE</p>
                     <input type="file" id="image-input" accept=".jpg, .jpeg, .png" hidden>
                 </div>
-                <button id="analyze-btn" class="primary-btn">Analyze Image</button>
+                <button id="analyze-btn" class="primary-btn">Initialize Inference</button>
             </section>
 
-            <!-- Loading Spinner -->
-            <div id="loading-overlay" class="hidden">
-                <div class="spinner"></div>
-                <p>Analyzing image...</p>
-            </div>
+            <!-- STAGE 2: PROCESSING CONSOLE -->
+            <section id="console-section" class="card console-card hidden">
+                <div class="console-title">
+                    <span>SYSTEM_PROCESSING_LOG</span>
+                    <span id="log-status">RUNNING...</span>
+                </div>
+                <div id="processing-log">
+                    <!-- Logs will be typed here -->
+                </div>
+            </section>
 
-            <!-- Results Dashboard (Hidden by default) -->
+            <!-- STAGE 3: ANALYSIS VISUALIZATION -->
             <div id="results-container" class="hidden">
                 <section class="analysis-grid">
-                    <!-- Original Image Card -->
-                    <div class="card hero-card">
-                        <h3>Original MRI Scan</h3>
-                        <div class="img-container">
-                            <img id="img-original" src="" alt="Original MRI">
+                    
+                    <!-- SOURCE SCAN WITH SCANNER ANIMATION -->
+                    <div class="card hero-card" id="hero-image-wrap">
+                        <h3>[02] MRI_DATA_VERIFICATION</h3>
+                        <div class="img-container" id="original-container">
+                            <img id="img-original" src="" alt="MRI Source">
+                            <div class="scanner-overlay">
+                                <div class="scanner-line"></div>
+                            </div>
                         </div>
+                        <p class="caption">SOURCE_IMAGE: Verified Grayscale Stream.</p>
                     </div>
 
-                    <!-- Preprocessing Pipeline Row -->
+                    <!-- DIP PIPELINE GRID -->
                     <div class="preprocessing-grid">
                         <div class="card sub-card">
-                            <h4>Denoised (Blur)</h4>
+                            <h4>NOISE_REDUCTION</h4>
                             <div class="img-container sm">
                                 <img id="img-denoised" src="" alt="Denoised">
                             </div>
-                            <p class="caption">Gaussian filter applied for noise reduction.</p>
+                            <p class="caption">Gaussian blur applied for artifact suppression.</p>
                         </div>
                         <div class="card sub-card">
-                            <h4>Enhanced (Hist)</h4>
+                            <h4>HIST_EQUALIZATION</h4>
                             <div class="img-container sm">
                                 <img id="img-enhanced" src="" alt="Enhanced">
                             </div>
-                            <p class="caption">Contrast improvement via Equalization.</p>
+                            <p class="caption">Contrast optimization via histogram scaling.</p>
                         </div>
                         <div class="card sub-card">
-                            <h4>Processed (128x128)</h4>
+                            <h4>INPUT_NORMALIZATION</h4>
                             <div class="img-container sm">
                                 <img id="img-processed" src="" alt="Processed">
                             </div>
-                            <p class="caption">Resized and normalized input for the model.</p>
+                            <p class="caption">Dimensional alignment: 128x128px grayscale.</p>
                         </div>
                     </div>
                 </section>
 
-                <!-- Final Prediction Result -->
-                <section class="prediction-card card">
-                    <h3>Final Diagnosis</h3>
-                    <div class="results-layout">
-                        <div class="result-item">
-                            <span class="label">Prediction:</span>
-                            <span id="res-prediction" class="value">--</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="label">Tumor Probability:</span>
-                            <span id="res-probability" class="value">--</span>
-                        </div>
-                        <div class="result-item">
-                            <span class="label">Confidence:</span>
-                            <span id="res-confidence" class="value">--</span>
+                <!-- FINAL GAUSSIAN DIAGNOSIS -->
+                <section class="card prediction-card">
+                    <h3>[03] FINAL_DIAGNOSTIC_OUTPUT</h3>
+                    
+                    <div id="res-tag" class="result-tag">--</div>
+
+                    <div class="gauge-container">
+                        <svg class="gauge-svg" viewBox="0 0 160 160">
+                            <circle class="gauge-bg" cx="80" cy="80" r="70"></circle>
+                            <circle id="gauge-progress" class="gauge-progress" cx="80" cy="80" r="70"></circle>
+                        </svg>
+                        <div class="gauge-text">
+                            <span id="res-confidence" class="gauge-value">0%</span>
+                            <span class="gauge-label">Confidence</span>
                         </div>
                     </div>
-                    <p class="disclaimer">*Note: This is an educational tool. Accuracy is based on training data.</p>
+
+                    <div class="result-item">
+                        <span class="label">RAW_PROBABILITY</span>
+                        <span id="res-probability" class="value" style="font-size: 1rem; color: #4ade80;">--</span>
+                    </div>
+
+                    <p class="disclaimer" style="margin-top: 2rem;">NEURAL_SCAN SYSTEM: For research/educational use only. Final clinical assessment required by medical professional.</p>
                 </section>
             </div>
         </main>
-
-        <footer>
-            <p>&copy; 2026 Brain Tumor Detection System</p>
-        </footer>
     </div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}"></script>
